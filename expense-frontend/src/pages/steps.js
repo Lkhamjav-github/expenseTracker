@@ -10,8 +10,8 @@ export default function steps() {
     return (
         <main>
             {/* <StepOne /> */}
-            <StepTwo />
-            {/* <SterThree /> */}
+            {/* <StepTwo /> */}
+            <SterThree />
         </main>
     );
 }
