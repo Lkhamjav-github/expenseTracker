@@ -9,7 +9,9 @@ const inter = Inter({ subsets: ["latin"] });
 export default function steps() {
     return (
         <main>
-            <StepOne />
+            {/* <StepOne /> */}
+            <StepTwo />
+            {/* <SterThree /> */}
         </main>
     );
 }

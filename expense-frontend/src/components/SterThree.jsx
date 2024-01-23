@@ -15,7 +15,7 @@ export const SterThree = () => {
                 </ul>
             </div>
             <div className='flex justify-center items-center flex-col w-[352px]'>
-                <img className='pt-[141px]' src="money.svg" alt="money" />
+                <img className='pt-[141px]' src="correct.svg" alt="correct" />
                 <h1 className='text-semibold text-2xl text-[#0F172A] pb-6'>Select base currency</h1>
                 <select className='p-4 text-semibold text-2xl bg-[#F3F4F6] border-[#D1D5DB] border-[1px] rounded-xl w-[352px ]'>
                     <option value="MNT - Mongolian Tugrik">MNT - Mongolian Tugrik</option>
