@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button } from './Button'
-export const StepOne = () => {
+
+export const SterThree = () => {
     return (
         <div className='flex flex-col justify-center items-center pt-10'>
             <div className='flex justify-center items-center  gap-4'>
@@ -10,8 +10,8 @@ export const StepOne = () => {
             <div className='flex justify-center items-center pt-12'>
                 <ul className="steps steps-vertical lg:steps-horizontal ">
                     <li className="step step-primary">Currency</li>
-                    <li className="step">Balance</li>
-                    <li className="step">Finish</li>
+                    <li className="step step-primary">Balance</li>
+                    <li className="step step-primary">Finish</li>
                 </ul>
             </div>
             <div className='flex justify-center items-center flex-col w-[352px]'>
