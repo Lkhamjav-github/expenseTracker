@@ -16,16 +16,27 @@ export const Signup = () => {
             alert(error.message)
         }
     }
+    const handleSignUp = async () => {
+        try {
+            const fetched = await fetch('http://localhost:8080/singup', {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    password
+                })
+            })
+            alert("success")
+        } catch (error) {
+            console.error(error)
+        }
+    }
     useEffect(() => {
         fetchdata
     }, [])
-    // if (repassword !== password) {
-
-    // }
-    // else {
-    //     alert("Эдгээр нууц үг таарахгүй байна. Дахин оролдоно уу.")
-    // }
-    // console.log("name is:" + name, "email is:" + email, "password is:" + password, "repassword is:" + repassword)
     return (
         <main className='flex '>
             <div className='flex flex-col gap-10 justify-center items-center w-1/2 h-screen' >
@@ -42,7 +53,7 @@ export const Signup = () => {
                     <input value={email} onChange={e => setEmail(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="text" placeholder='Email' />
                     <input value={password} onChange={e => setPassword(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="password" placeholder='Password' />
                     <input value={repassword} onChange={e => setRepassword(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="password" placeholder='Re-password' />
-                    <button className='bg-blue text-white rounded-[20px] h-12'>Sign up</button>
+                    <button onClick={handleSignUp} className='bg-blue text-white rounded-[20px] h-12'>Sign up</button>
                 </div>
                 <div className='flex gap-2'>
                     <h5>Already have account?</h5>
