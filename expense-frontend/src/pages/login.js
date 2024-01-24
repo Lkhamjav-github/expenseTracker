@@ -19,7 +19,7 @@ export const LogIn = () => {
                 </div>
                 <div className='flex gap-2'>
                     <h5>Dont have account?</h5>
-                    <a className='text-blue pointer'>Sign up</a>
+                    <a href='/signup' className='text-blue pointer'>Sign up</a>
                 </div>
             </div>
             <div className='w-1/2 bg-blue '>
