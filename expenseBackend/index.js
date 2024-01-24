@@ -30,10 +30,12 @@ app.get("/neon", async (req, res) => {
 app.post("/signup", async (req, res) => {
     const body = res.body;
     const { name, Email, password } = body;
+    const bycryptPassword = bcrypt.hashSync(password, salt);
     const data = await sql`INSERT INTO usergeld {name, Email, password }
-    VALUES (${name}, ${Email}, ${password});`;
-    res.send(data)
+    VALUES (${name}, ${Email}, ${bycryptPassword});`;
+    res.send("succsefully created")
 })
+
 
 app.listen(PORT, () => {
     console.log("Application running at http://localhost:" + PORT)
