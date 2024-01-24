@@ -18,10 +18,10 @@ console.log(bycryptPassword)
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-    res.send("hello world!");
+// app.get("/", (req, res) => {
+//     res.send("hello world!");
 
-});
+// });
 
 app.get("/neon", async (req, res) => {
     const data = await sql`SELECT * FROM playing_with_neon;`;
@@ -29,11 +29,14 @@ app.get("/neon", async (req, res) => {
 });
 app.post("/signup", async (req, res) => {
     const { name, email, password } = req.body;
-    // const { name, Email, password } = body;
     const bycryptPassword = bcrypt.hashSync(password, salt);
-    const data = await sql`INSERT INTO userGeld {name, email, password }
-    VALUES (${name}, ${email}, ${bycryptPassword});`;
+    const data = await sql`INSERT INTO users (email, name,  password,avatarImg,createdAt,updatedAt)
+    VALUES ( ${email},${name}, ${bycryptPassword},"",${new Date()},${new Date()});`
     res.send("succsefully created")
+})
+app.get("/", async (req, res) => {
+    const data = await sql`select * from users`
+    res.send(data);
 })
 
 
