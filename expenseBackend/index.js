@@ -28,11 +28,11 @@ app.get("/neon", async (req, res) => {
     res.send(data)
 });
 app.post("/signup", async (req, res) => {
-    const body = res.body;
-    const { name, Email, password } = body;
+    const { name, email, password } = req.body;
+    // const { name, Email, password } = body;
     const bycryptPassword = bcrypt.hashSync(password, salt);
-    const data = await sql`INSERT INTO usergeld {name, Email, password }
-    VALUES (${name}, ${Email}, ${bycryptPassword});`;
+    const data = await sql`INSERT INTO userGeld {name, email, password }
+    VALUES (${name}, ${email}, ${bycryptPassword});`;
     res.send("succsefully created")
 })
 
