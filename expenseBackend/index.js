@@ -29,16 +29,16 @@ app.get("/neon", async (req, res) => {
 });
 app.post("/signup", async (req, res) => {
     const { name, email, password } = req.body;
+    console.log(req.body)
     const bycryptPassword = bcrypt.hashSync(password, salt);
     const data = await sql`INSERT INTO users (email, name,  password,avatarImg,createdAt,updatedAt)
-    VALUES ( ${email},${name}, ${bycryptPassword},"",${new Date()},${new Date()});`
+    VALUES ( ${email},${name},${bycryptPassword},'img',${new Date()},${new Date()});`
     res.send("succsefully created")
 })
 app.get("/", async (req, res) => {
     const data = await sql`select * from users`
     res.send(data);
 })
-
 
 app.listen(PORT, () => {
     console.log("Application running at http://localhost:" + PORT)

@@ -8,7 +8,7 @@ export const Signup = () => {
     const [users, setUsers] = useState('');
     const fetchdata = async () => {
         try {
-            const res = await fetch("http://localhost:8080/users");
+            const res = await fetch("http://localhost:8080/signup");
             const data = await res.json()
             setUsers(data)
         }
@@ -16,9 +16,10 @@ export const Signup = () => {
             alert(error.message)
         }
     }
+    console.log(name);
     const handleSignUp = async () => {
         try {
-            const fetched = await fetch('http://localhost:8080/singup', {
+            const fetched = await fetch('http://localhost:8080/signup', {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"
@@ -28,7 +29,9 @@ export const Signup = () => {
                     email,
                     password
                 })
+
             })
+
             alert("success")
         } catch (error) {
             console.error(error)
