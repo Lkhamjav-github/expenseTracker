@@ -7,7 +7,7 @@ export const LogIn = () => {
         try {
             const res = await fetch("http://localhost:8080/login");
             const data = await res.json()
-            setUsers(data)
+
         }
         catch (error) {
             alert(error.message)
