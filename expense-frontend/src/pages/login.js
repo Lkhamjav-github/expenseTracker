@@ -25,7 +25,6 @@ export const LogIn = () => {
                 console.log('Login successful', data);
             })
             .catch(error => {
-
                 console.error('Error during login:', error);
             });
         const request = async () => {

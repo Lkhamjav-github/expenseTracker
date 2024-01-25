@@ -20,7 +20,6 @@ app.use(cors());
 
 // app.get("/", (req, res) => {
 //     res.send("hello world!");
-
 // });
 
 app.get("/neon", async (req, res) => {
@@ -28,10 +27,11 @@ app.get("/neon", async (req, res) => {
     res.send(data)
 });
 app.get("/login", async (req, res) => {
+
     const { email, password } = req.body;
     const bycryptPassword = bcrypt.hashSync(password, salt);
     const data = await sql`INSERT INTO users (email, name,  password,avatarImg,createdAt,updatedAt)
-    VALUES ( ${email},${name},${bycryptPassword},'img',${new Date()},${new Date()});`
+    VALUES ( ${email},,${bycryptPassword},'img',${new Date()},${new Date()});`
     res.send("succsefully created")
 })
 app.post("/signup", async (req, res) => {
