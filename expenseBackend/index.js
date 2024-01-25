@@ -27,6 +27,13 @@ app.get("/neon", async (req, res) => {
     const data = await sql`SELECT * FROM playing_with_neon;`;
     res.send(data)
 });
+app.get("/login", async (req, res) => {
+    const { email, password } = req.body;
+    const bycryptPassword = bcrypt.hashSync(password, salt);
+    const data = await sql`INSERT INTO users (email, name,  password,avatarImg,createdAt,updatedAt)
+    VALUES ( ${email},${name},${bycryptPassword},'img',${new Date()},${new Date()});`
+    res.send("succsefully created")
+})
 app.post("/signup", async (req, res) => {
     const { name, email, password } = req.body;
     console.log(req.body)
