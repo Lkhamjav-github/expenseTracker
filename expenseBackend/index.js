@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { sql } = require("./db");
 const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
 
 const saltRounds = 10;
 const password = '12345678';
@@ -10,10 +11,12 @@ const password = '12345678';
 const salt = bcrypt.genSaltSync(saltRounds);
 const app = express();
 
+
 const PORT = 8080;
 const bycryptPassword = bcrypt.hashSync(password, salt);
+const secretKey =
 
-console.log(bycryptPassword)
+    console.log(bycryptPassword)
 
 app.use(express.json());
 app.use(cors());
@@ -42,6 +45,9 @@ app.get("/login", async (req, res) => {
         if (!checkPassword) {
             return res.status(400).json({ message: 'wrong password' })
         }
+
+        const token = jwt.sign({ userId: findUser[0].id }, secretKey, { expiresIn: '10h' })
+
         res.status(201).json({ message: 'User sign in success', token })
     }
     catch (error) {
