@@ -4,6 +4,7 @@ const { sql } = require("./db");
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
+
 const saltRounds = 10;
 const password = '12345678';
 
@@ -14,9 +15,9 @@ const app = express();
 
 const PORT = 8080;
 const bycryptPassword = bcrypt.hashSync(password, salt);
-const secretKey =
+const secretKey = process.env.SECRET_KEY
 
-    console.log(bycryptPassword)
+console.log(bycryptPassword)
 
 app.use(express.json());
 app.use(cors());
