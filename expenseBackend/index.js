@@ -28,19 +28,42 @@ app.get("/neon", async (req, res) => {
 });
 app.get("/login", async (req, res) => {
 
-    const { email, password } = req.body;
-    const bycryptPassword = bcrypt.hashSync(password, salt);
-    const data = await sql`INSERT INTO users (email, name,  password,avatarImg,createdAt,updatedAt)
-    VALUES ( ${email},,${bycryptPassword},'img',${new Date()},${new Date()});`
-    res.send("succsefully created")
+    try {
+        const { email, password } = req.body;
+
+        const findUser = await sql`SELECT * FROM users WHERE email=${email}`
+        console.log("findUser", findUser);
+
+        if (findUser.length === 0) {
+            return res.status(400).json({ message: 'User not found' })
+        }
+        const checkPassword = bcrypt.compare(password, findUser[0].password);
+
+        if (!checkPassword) {
+            return res.status(400).json({ message: 'wrong password' })
+        }
+        res.status(201).json({ message: 'User sign in success', token })
+    }
+    catch (error) {
+        console.log(error)
+        res.status(500).json({ message: 'User failed' })
+    }
+
 })
 app.post("/signup", async (req, res) => {
     const { name, email, password } = req.body;
-    console.log(req.body)
+
+    const findUser = await sql`SELECT email FROM users WHERE email=${email}`;
+
+    if (findUser.length > 0) {
+        return res.status(400).json({ message: 'User email is already exist' })
+    }
+
     const bycryptPassword = bcrypt.hashSync(password, salt);
+
     const data = await sql`INSERT INTO users (email, name,  password,avatarImg,createdAt,updatedAt)
     VALUES ( ${email},${name},${bycryptPassword},'img',${new Date()},${new Date()});`
-    res.send("succsefully created")
+    res.send(201).json({ message: 'succsefully created' })
 })
 app.get("/", async (req, res) => {
     const data = await sql`select * from users`
