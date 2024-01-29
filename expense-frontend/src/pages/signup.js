@@ -29,7 +29,6 @@ export const Signup = () => {
                     email,
                     password
                 })
-
             })
 
             alert("success")

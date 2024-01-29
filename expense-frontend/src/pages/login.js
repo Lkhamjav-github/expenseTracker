@@ -1,36 +1,26 @@
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
+
 
 export const LogIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const router = useRouter()
+    // const [error, setError] = useState('false')
     const fetchdata = async () => {
         try {
             const res = await fetch("http://localhost:8080/login");
             const data = await res.json()
-
         }
         catch (error) {
             alert(error.message)
         }
     }
     const handleLogIn = async () => {
-        fetch("http://localhost:8080/login", request)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Login successful', data);
-            })
-            .catch(error => {
-                console.error('Error during login:', error);
-            });
-        const request = async () => {
-            try {
-                const fetched = await fetch('http://localhost:8080/login', {
-                    method: "GET",
+        try {
+            if (password || email) {
+                const response = await fetch('http://localhost:8080/login', {
+                    method: "POST",
                     headers: {
                         "Content-type": "application/json"
                     },
@@ -38,14 +28,18 @@ export const LogIn = () => {
                         email,
                         password
                     })
-                })
-
-                alert("success")
-            } catch (error) {
-                console.error(error)
+                });
+                router.push("/")
+                if (!response.ok) {
+                    return console.log('s')
+                }
+                alert("success");
             }
+        } catch (error) {
+            alert(error);
         }
-    }
+    };
+
     useEffect(() => {
         fetchdata
     }, [])
