@@ -30,11 +30,12 @@ app.get("/neon", async (req, res) => {
     const data = await sql`SELECT * FROM playing_with_neon;`;
     res.send(data)
 });
-app.get("/login", async (req, res) => {
-
+app.post("/login", async (req, res) => {
+    const { email, password } = req.body;
     try {
-        const { email, password } = req.body;
-
+        if (!email || !password) {
+            return res.status(400).send("Email and password are require")
+        }
         const findUser = await sql`SELECT * FROM users WHERE email=${email}`
         console.log("findUser", findUser);
 
@@ -42,7 +43,6 @@ app.get("/login", async (req, res) => {
             return res.status(400).json({ message: 'User not found' })
         }
         const checkPassword = bcrypt.compare(password, findUser[0].password);
-
         if (!checkPassword) {
             return res.status(400).json({ message: 'wrong password' })
         }
@@ -55,7 +55,6 @@ app.get("/login", async (req, res) => {
         console.log(error)
         res.status(500).json({ message: 'User failed' })
     }
-
 })
 app.post("/signup", async (req, res) => {
     const { name, email, password } = req.body;
