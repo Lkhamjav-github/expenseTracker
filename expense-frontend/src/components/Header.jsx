@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Records = () => {
+export const Header = () => {
     return (
         <header className='flex'>
             <div className='flex justify-center items-center' >
