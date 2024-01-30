@@ -2,10 +2,11 @@ import React from 'react'
 
 export const Dashboard = () => {
     return (
-        <div className='bg-[#F3F4F6] '>
-            <div className='py-8 px-[120px] flex gap-6 ' >
-                <img src="./Large.png" alt="cash" />
-                <div className='rounded-xl bg-white  w-[384px]'>
+        <div className='bg-[#F3F4F6] flex justify-center items-center'>
+
+            <div className='py-8 px-[120px] grid grid-cols-3 gap-6 lg:w-[1440px] ' >
+                <img className='h-[213px]' src="./Large.png" alt="cash" />
+                <div className='rounded-xl bg-white  '>
                     <div className='flex justify-start items-center py-4 px-6 gap-2'>
                         <div className='w-2 h-2 rounded-full bg-[#84CC16]'></div>
                         <h2 className='text-base font-semibold '>Your Income</h2>
@@ -22,7 +23,7 @@ export const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className='rounded-xl bg-white  w-[384px]'>
+                <div className='rounded-xl bg-white  '>
                     <div className='flex justify-start items-center py-4 px-6 gap-2'>
                         <div className='w-2 h-2 rounded-full bg-blue'></div>
                         <h2 className='text-base font-semibold '>Total Express</h2>
@@ -40,6 +41,7 @@ export const Dashboard = () => {
                     </div>
                 </div>
             </div>
+
 
         </div>
     )
