@@ -2,13 +2,13 @@ import React from 'react'
 
 export const Header = () => {
     return (
-        <header className='flex'>
-            <div className='flex justify-center items-center' >
+        <header className='flex py-4 px-[120px] justify-between'>
+            <div className='flex justify-center items-center gap-6' >
                 <img src="./Geld.svg" alt="" />
                 <a href="">Dashboard</a>
                 <a href="">Records</a>
             </div>
-            <div>
+            <div className='flex gap-6'>
                 <button className='flex justify-center items-center'>
                     <svg width="99" height="32" viewBox="0 0 99 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="99" height="32" rx="16" fill="#0166FF" />
