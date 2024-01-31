@@ -3,7 +3,6 @@ import React from 'react'
 export const Dashboard = () => {
     return (
         <div className='bg-[#F3F4F6] flex justify-center items-center'>
-
             <div className='py-8 px-[120px] grid grid-cols-3 gap-6 lg:w-[1440px] ' >
                 <img className='h-[213px]' src="./Large.png" alt="cash" />
                 <div className='rounded-xl bg-white  '>
