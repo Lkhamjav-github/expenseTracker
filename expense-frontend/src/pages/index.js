@@ -4,6 +4,7 @@ import { Loading } from "@/components/Loading";
 import { Dashboard } from "@/components/Dashboard";
 import { Header } from "@/components/Header";
 import { Records } from "@/components/Records";
+import { Modal } from "@/components/Modal";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -12,7 +13,8 @@ export default function Home() {
       <Header />
       {/* <Loading /> */}
       {/* <Dashboard /> */}
-      <Records />
+      {/* <Records /> */}
+      <Modal />
     </main>
   );
 }
