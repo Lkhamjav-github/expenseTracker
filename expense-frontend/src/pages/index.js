@@ -13,8 +13,8 @@ export default function Home() {
       <Header />
       {/* <Loading /> */}
       {/* <Dashboard /> */}
-      {/* <Records /> */}
-      <Modal />
+      <Records />
+      {/* <Modal /> */}
     </main>
   );
 }

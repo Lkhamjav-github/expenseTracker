@@ -19,6 +19,7 @@ export const Modal = () => {
                     <input type="text" placeholder='$  000.00' />
                 </label>
                 <h2>Category</h2>
+                <select name="" id=""></select>
             </div>
         </div>
     )
