@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Modal = () => {
     return (
-        <div>
+        <div className='w-[792px] border-solid border-2 rounded-xl'>
             <div className='flex justify-between py-5 px-6'>
                 <h1>Add Record</h1>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,16 +10,39 @@ export const Modal = () => {
                 </svg>
             </div>
             <hr />
-            <div className='flex py-5 px-6 flex-col'>
-                <button>
-                    expense income
-                </button>
-                <label className='rounded-xl border-2 border-black ' htmlFor="" >
-                    <h1>Amount</h1>
-                    <input type="text" placeholder='$  000.00' />
-                </label>
-                <h2>Category</h2>
-                <select name="" id=""></select>
+            <div className='flex'>
+                <div className='flex py-5 px-6 flex-col'>
+                    <button>
+                        expense income
+                    </button>
+                    <label className='rounded-xl border-2 border-black ' htmlFor="" >
+                        <h1>Amount</h1>
+                        <input type="text" placeholder='$  000.00' />
+                    </label>
+                    <h2>Category</h2>
+                    <select name="" id=""></select>
+                    <div className='flex'>
+                        <div>
+                            <h2>Date</h2>
+                            <select name="" id="">
+                                mm:date ,year
+                            </select>
+                        </div>
+                        <div>
+                            <h2>Date</h2>
+                            <select name="" id="">
+                                mm:date ,year
+                            </select>
+                        </div>
+                    </div>
+                    <button> Add record</button>
+                </div>
+                <div>
+                    <h2>Payee </h2>
+                    <input type="text" placeholder='Write here' />
+                    <h2>Note</h2>
+                    <input type="text" placeholder='Write here' />
+                </div>
             </div>
         </div>
     )

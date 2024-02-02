@@ -41,7 +41,6 @@ export const Records = (props) => {
                                     <span className="label-text">Expense</span>
                                 </label>
                             </div>
-
                         </form>
                     </div>
                     <div className='flex flex-col gap-2'>
