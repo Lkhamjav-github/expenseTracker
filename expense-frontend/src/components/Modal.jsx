@@ -12,9 +12,10 @@ export const Modal = () => {
             <hr />
             <div className='flex'>
                 <div className='flex py-5 px-6 flex-col'>
-                    <button>
-                        expense income
-                    </button>
+                    <div>
+                        <button>Expense</button>
+                        <button>Income</button>
+                    </div>
                     <label className='rounded-xl border-2 border-black ' htmlFor="" >
                         <h1>Amount</h1>
                         <input type="text" placeholder='$  000.00' />
