@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const Modal = () => {
+    const [toggle, setToggle] = useState('Expense');
+    console.log("toggle :", toggle)
+    const toggleButton = () => {
+        if (toggle === 'Expense') {
+            setToggle('Income')
+        }
+        else {
+            setToggle('Expense')
+        }
+    };
     return (
         <div className='w-[792px] border-solid border-2 rounded-xl'>
             <div className='flex justify-between py-5 px-6'>
@@ -12,9 +22,9 @@ export const Modal = () => {
             <hr />
             <div className='flex'>
                 <div className='flex py-5 px-6 flex-col'>
-                    <div>
-                        <button>Expense</button>
-                        <button>Income</button>
+                    <div className='flex gap-[69px] justify-center items-center bg-[#F3F4F6]'>
+                        <button onClick={toggleButton} className={`py-2 px-[55px] ${toggle === 'Expense' ? 'bg-blue' : ''} rounded-xl`}>Expense</button>
+                        <button onClick={toggleButton} className={`py-2 px-[55px] ${toggle === ' Expense' ? 'bg-none' : 'bg-[#16A34A]'} rounded-xl`}>Income</button>
                     </div>
                     <label className='rounded-xl border-2 border-black ' htmlFor="" >
                         <h1>Amount</h1>
@@ -45,6 +55,6 @@ export const Modal = () => {
                     <input type="text" placeholder='Write here' />
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

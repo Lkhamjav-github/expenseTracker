@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Eye } from './icons/Eye'
 import { Right } from './icons/Right'
 import { Category } from './Category'
@@ -8,12 +8,31 @@ export const Records = (props) => {
     // addRecord(() => {
 
     // })
+    const [toggle, setToggle] = useState('Expense');
+    console.log("toggle :", toggle)
+    const toggleButton = () => {
+        if (toggle === 'Expense') {
+            setToggle('Income')
+        }
+        else {
+            setToggle('Expense')
+        }
+    };
+    const [add, setAdd] = useState('add')
+    const Add = () => {
+        if (add === '') {
+            setAdd('added')
+        }
+        else {
+            setAdd('')
+        }
+    }
     return (
         <div className='bg-[#F3F4F6] flex justify-center items-center  flex-col'>
             <div className='py-8 px-[120px] flex gap-6 lg:w-[1440px]'>
                 <div className='bg-white rounded-xl py-4 px-4 gap-6 flex flex-col'>
                     <h1>Records</h1>
-                    <button className='flex justify-center items-center bg-blue rounded-xl text-white gap-1 w-[250px]  '>
+                    <button onClick={Add} className='flex justify-center items-center bg-blue rounded-xl text-white gap-1 w-[250px]  '>
                         <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18 10C18 10.1658 17.9342 10.3247 17.8169 10.4419C17.6997 10.5592 17.5408 10.625 17.375 10.625H11.125V16.875C11.125 17.0408 11.0592 17.1997 10.9419 17.3169C10.8247 17.4342 10.6658 17.5 10.5 17.5C10.3342 17.5 10.1753 17.4342 10.0581 17.3169C9.94085 17.1997 9.875 17.0408 9.875 16.875V10.625H3.625C3.45924 10.625 3.30027 10.5592 3.18306 10.4419C3.06585 10.3247 3 10.1658 3 10C3 9.83424 3.06585 9.67527 3.18306 9.55806C3.30027 9.44085 3.45924 9.375 3.625 9.375H9.875V3.125C9.875 2.95924 9.94085 2.80027 10.0581 2.68306C10.1753 2.56585 10.3342 2.5 10.5 2.5C10.6658 2.5 10.8247 2.56585 10.9419 2.68306C11.0592 2.80027 11.125 2.95924 11.125 3.125V9.375H17.375C17.5408 9.375 17.6997 9.44085 17.8169 9.55806C17.9342 9.67527 18 9.83424 18 10Z" fill="white" />
                         </svg>
@@ -223,39 +242,54 @@ export const Records = (props) => {
                                 </div>
                                 <h2 className='text-[#23E01F] text-base font-semibold'>- 35,500$</h2>
                             </div>
-                            <div className='bg-white rounded-lg py-3 px-6 flex justify-between items-center' >
-                                <div className='flex gap-4'>
-                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="20" cy="20" r="20" fill="#0166FF" />
-                                        <path d="M27.5 19.0272V26.2499C27.5 26.5814 27.3683 26.8994 27.1339 27.1338C26.8995 27.3682 26.5815 27.4999 26.25 27.4999H23.125C22.7935 27.4999 22.4755 27.3682 22.2411 27.1338C22.0067 26.8994 21.875 26.5814 21.875 26.2499V23.1249C21.875 22.9591 21.8092 22.8002 21.6919 22.6829C21.5747 22.5657 21.4158 22.4999 21.25 22.4999H18.75C18.5842 22.4999 18.4253 22.5657 18.3081 22.6829C18.1908 22.8002 18.125 22.9591 18.125 23.1249V26.2499C18.125 26.5814 17.9933 26.8994 17.7589 27.1338C17.5245 27.3682 17.2065 27.4999 16.875 27.4999H13.75C13.4185 27.4999 13.1005 27.3682 12.8661 27.1338C12.6317 26.8994 12.5 26.5814 12.5 26.2499V19.0272C12.5 18.8542 12.5359 18.6831 12.6054 18.5247C12.6749 18.3663 12.7766 18.224 12.9039 18.1069L19.1539 12.21L19.1625 12.2015C19.3926 11.9922 19.6925 11.8762 20.0035 11.8762C20.3146 11.8762 20.6144 11.9922 20.8445 12.2015C20.8472 12.2045 20.8501 12.2074 20.8531 12.21L27.1031 18.1069C27.2292 18.2246 27.3295 18.3672 27.3978 18.5256C27.4661 18.6839 27.5009 18.8548 27.5 19.0272Z" fill="white" />
-                                    </svg>
-                                    <div>
-                                        <span>Lending & Rating</span>
-                                        <p className='text-[#6B7280]'>14:00</p>
-                                    </div>
-                                </div>
-                                <h2 className='text-[#23E01F] text-base font-semibold'>- 35,500$</h2>
-                            </div>
-                            <div className='bg-white rounded-lg py-3 px-6 flex justify-between items-center' >
-                                <div className='flex gap-4'>
-                                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="20" cy="20" r="20" fill="#0166FF" />
-                                        <path d="M27.5 19.0272V26.2499C27.5 26.5814 27.3683 26.8994 27.1339 27.1338C26.8995 27.3682 26.5815 27.4999 26.25 27.4999H23.125C22.7935 27.4999 22.4755 27.3682 22.2411 27.1338C22.0067 26.8994 21.875 26.5814 21.875 26.2499V23.1249C21.875 22.9591 21.8092 22.8002 21.6919 22.6829C21.5747 22.5657 21.4158 22.4999 21.25 22.4999H18.75C18.5842 22.4999 18.4253 22.5657 18.3081 22.6829C18.1908 22.8002 18.125 22.9591 18.125 23.1249V26.2499C18.125 26.5814 17.9933 26.8994 17.7589 27.1338C17.5245 27.3682 17.2065 27.4999 16.875 27.4999H13.75C13.4185 27.4999 13.1005 27.3682 12.8661 27.1338C12.6317 26.8994 12.5 26.5814 12.5 26.2499V19.0272C12.5 18.8542 12.5359 18.6831 12.6054 18.5247C12.6749 18.3663 12.7766 18.224 12.9039 18.1069L19.1539 12.21L19.1625 12.2015C19.3926 11.9922 19.6925 11.8762 20.0035 11.8762C20.3146 11.8762 20.6144 11.9922 20.8445 12.2015C20.8472 12.2045 20.8501 12.2074 20.8531 12.21L27.1031 18.1069C27.2292 18.2246 27.3295 18.3672 27.3978 18.5256C27.4661 18.6839 27.5009 18.8548 27.5 19.0272Z" fill="white" />
-                                    </svg>
-                                    <div>
-                                        <span>Lending & Rating</span>
-                                        <p className='text-[#6B7280]'>14:00</p>
-                                    </div>
-                                </div>
-                                <h2 className='text-[#23E01F] text-base font-semibold'>- 35,500$</h2>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {/* <div id='modal'>
-
-            </div> */}
+            <div className={`w-[792px] border-solid border-2 rounded-xl ${add === 'add' ? 'hidden' : 'absolute'} bg-white`}>
+                <div className='flex justify-between py-5 px-6'>
+                    <h1>Add Record</h1>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.5459 17.954C19.7572 18.1653 19.876 18.452 19.876 18.7509C19.876 19.0497 19.7572 19.3364 19.5459 19.5477C19.3346 19.7591 19.0479 19.8778 18.749 19.8778C18.4501 19.8778 18.1635 19.7591 17.9521 19.5477L12 13.5937L6.0459 19.5459C5.83455 19.7572 5.54791 19.8759 5.24902 19.8759C4.95014 19.8759 4.66349 19.7572 4.45215 19.5459C4.2408 19.3345 4.12207 19.0479 4.12207 18.749C4.12207 18.4501 4.2408 18.1635 4.45215 17.9521L10.4062 11.9999L4.45402 6.04586C4.24268 5.83451 4.12395 5.54787 4.12395 5.24898C4.12395 4.9501 4.24268 4.66345 4.45402 4.45211C4.66537 4.24076 4.95201 4.12203 5.2509 4.12203C5.54978 4.12203 5.83643 4.24076 6.04777 4.45211L12 10.4062L17.954 4.45117C18.1654 4.23983 18.452 4.12109 18.7509 4.12109C19.0498 4.12109 19.3364 4.23983 19.5478 4.45117C19.7591 4.66251 19.8778 4.94916 19.8778 5.24804C19.8778 5.54693 19.7591 5.83358 19.5478 6.04492L13.5937 11.9999L19.5459 17.954Z" fill="#0F172A" />
+                    </svg>
+                </div>
+                <hr />
+                <div className='flex'>
+                    <div className='flex py-5 px-6 flex-col'>
+                        <div className='flex gap-[69px] justify-center items-center bg-[#F3F4F6]'>
+                            <button onClick={toggleButton} className={`py-2 px-[55px] ${!toggle ? 'bg-blue' : ''} rounded-xl`}>Expense</button>
+                            <button onClick={toggleButton} className={`py-2 px-[55px] ${toggle ? 'bg-[#16A34A]' : ''} rounded-xl`}>Income</button>
+                        </div>
+                        <label className='rounded-xl border-2 border-black ' htmlFor="" >
+                            <h1>Amount</h1>
+                            <input type="text" placeholder='$  000.00' />
+                        </label>
+                        <h2>Category</h2>
+                        <select name="" id=""></select>
+                        <div className='flex'>
+                            <div>
+                                <h2>Date</h2>
+                                <select name="" id="">
+                                    mm:date ,year
+                                </select>
+                            </div>
+                            <div>
+                                <h2>Date</h2>
+                                <select name="" id="">
+                                    mm:date ,year
+                                </select>
+                            </div>
+                        </div>
+                        <button> Add record</button>
+                    </div>
+                    <div>
+                        <h2>Payee </h2>
+                        <input type="text" placeholder='Write here' />
+                        <h2>Note</h2>
+                        <input type="text" placeholder='Write here' />
+                    </div>
+                </div>
+            </div >
         </div>
     )
 }
