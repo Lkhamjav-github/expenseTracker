@@ -1,6 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import * as yup from 'yup';
+import { userSchema } from '@/Validations/UserValidation';
 
 export const Signup = () => {
+    const createUser = async (event) => {
+        event.preventdefault()
+        let formData = {
+            name: event.target[0].value,
+            email: event.target[1].value,
+            password: event.target[2].value
+        }
+        const isValid = await userSchema.isValid(formData)
+        console.log(isValid)
+    }
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -55,7 +67,7 @@ export const Signup = () => {
                     <input value={email} onChange={e => setEmail(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="text" placeholder='Email' />
                     <input value={password} onChange={e => setPassword(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="password" placeholder='Password' />
                     <input value={repassword} onChange={e => setRepassword(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="password" placeholder='Re-password' />
-                    <button onClick={handleSignUp} className='bg-blue text-white rounded-[20px] h-12'>Sign up</button>
+                    <button onSubmit={createUser} onClick={handleSignUp} className='bg-blue text-white rounded-[20px] h-12'>Sign up</button>
                 </div>
                 <div className='flex gap-2'>
                     <h5>Already have account?</h5>
