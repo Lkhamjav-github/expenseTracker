@@ -5,6 +5,7 @@ import { Dashboard } from "@/components/Dashboard";
 import { Header } from "@/components/Header";
 import { Records } from "@/components/Records";
 import { Modal } from "@/components/Modal";
+import { Fonthideye } from "@/components/icons/Fonthideye";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
