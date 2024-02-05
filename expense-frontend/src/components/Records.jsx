@@ -29,7 +29,7 @@ export const Records = (props) => {
     }
     return (
         <div className='bg-[#F3F4F6] flex justify-center items-center  flex-col'>
-            <div className={`py-8 px-[120px] flex gap-6 lg:w-[1440px] ${add === 'added' ? '' : 'bg-[#00000080]'}`}>
+            <div className={`py-8 px-[120px] flex gap-6 lg:w-[1440px]`}>
                 <div className='bg-white rounded-xl py-4 px-4 gap-6 flex flex-col'>
                     <h1>Records</h1>
                     <button onClick={Add} className='flex justify-center items-center bg-blue rounded-xl text-white gap-1 w-[250px]  '>
@@ -106,17 +106,18 @@ export const Records = (props) => {
                 <div className='flex flex-col gap-6'>
                     <div className='flex justify-between pb-4'>
                         <div className='flex items-center gap-4'>
-                            <button className='rounded-lg p-1.5 bg-[#E5E7EB]'>
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7906 5.23017C13.0777 5.52875 13.0684 6.00353 12.7698 6.29063L8.83208 10L12.7698 13.7094C13.0684 13.9965 13.0777 14.4713 12.7906 14.7698C12.5035 15.0684 12.0287 15.0777 11.7302 14.7906L7.23017 10.5406C7.08311 10.3992 7 10.204 7 10C7 9.79599 7.08311 9.60078 7.23017 9.45938L11.7302 5.20938C12.0287 4.92228 12.5035 4.93159 12.7906 5.23017Z" fill="#0F172A" />
+                            <button className='rounded-lg p-[15px] bg-[#E5E7EB]'>
+                                <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.79062 0.230169C6.07772 0.528748 6.06841 1.00353 5.76983 1.29063L1.83208 5L5.76983 8.70938C6.06841 8.99647 6.07772 9.47125 5.79062 9.76983C5.50353 10.0684 5.02875 10.0777 4.73017 9.79063L0.230167 5.54063C0.0831082 5.39922 -1.18115e-06 5.20401 -1.17223e-06 5C-1.16331e-06 4.79599 0.0831082 4.60078 0.230167 4.45938L4.73017 0.209376C5.02875 -0.077719 5.50353 -0.0684095 5.79062 0.230169Z" fill="#0F172A" />
                                 </svg>
+
                             </button>
                             <h1>Last 30 Days</h1>
-                            <button className='rounded-lg p-1.5 bg-[#E5E7EB]'>
-                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="32" height="32" rx="8" fill="#E5E7EB" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.2094 20.7698C12.9223 20.4713 12.9316 19.9965 13.2302 19.7094L17.1679 16L13.2302 12.2906C12.9316 12.0035 12.9223 11.5287 13.2094 11.2302C13.4965 10.9316 13.9713 10.9223 14.2698 11.2094L18.7698 15.4594C18.9169 15.6008 19 15.796 19 16C19 16.204 18.9169 16.3992 18.7698 16.5406L14.2698 20.7906C13.9713 21.0777 13.4965 21.0684 13.2094 20.7698Z" fill="#0F172A" />
+                            <button className='rounded-lg p-[15px] bg-[#E5E7EB]'>
+                                <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.209376 9.76983C-0.0777189 9.47125 -0.0684094 8.99647 0.230169 8.70937L4.16792 5L0.230169 1.29062C-0.0684099 1.00353 -0.0777193 0.528747 0.209376 0.230167C0.496471 -0.0684109 0.971253 -0.0777207 1.26983 0.209374L5.76983 4.45937C5.91689 4.60078 6 4.79599 6 5C6 5.20401 5.91689 5.39922 5.76983 5.54062L1.26983 9.79062C0.971254 10.0777 0.496471 10.0684 0.209376 9.76983Z" fill="#0F172A" />
                                 </svg>
+
                             </button>
                         </div>
                         <button className='flex items-center p-4 bg-white rounded-lg gap-8 '>
