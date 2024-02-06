@@ -1,23 +1,49 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import * as yup from 'yup';
 import { userSchema } from '@/Validations/UserValidation';
 
 export const Signup = () => {
+
     const createUser = async (event) => {
-        event.preventdefault()
-        let formData = {
+        console.log("create user")
+        event.preventDefault()
+        var formData = {
             name: event.target[0].value,
             email: event.target[1].value,
             password: event.target[2].value
         }
         const isValid = await userSchema.isValid(formData)
-        console.log(isValid)
+        const validate = await userSchema.validate(formData)
+        console.log("isValid", isValid)
+        console.log("validate", validate)
+        if (isValid) {
+            try {
+
+                const fetched = await fetch('http://localhost:8080/signup', {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        password
+                    })
+                })
+
+                alert("success")
+            } catch (error) {
+                console.error(error)
+            }
+        }
     }
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repassword, setRepassword] = useState('');
     const [users, setUsers] = useState('');
+
     const fetchdata = async () => {
         try {
             const res = await fetch("http://localhost:8080/signup");
@@ -28,26 +54,9 @@ export const Signup = () => {
             alert(error.message)
         }
     }
-    console.log(name);
-    const handleSignUp = async () => {
-        try {
-            const fetched = await fetch('http://localhost:8080/signup', {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json"
-                },
-                body: JSON.stringify({
-                    name,
-                    email,
-                    password
-                })
-            })
+    // const handleSignUp = async () => {
 
-            alert("success")
-        } catch (error) {
-            console.error(error)
-        }
-    }
+    // }
     useEffect(() => {
         fetchdata
     }, [])
@@ -62,13 +71,15 @@ export const Signup = () => {
                     <h1 className='text-2xl font-semibold'>Create Geld account</h1>
                     <p className='dont-normal text-base text-[#334155]'>Sign up below to create your Wallet account</p>
                 </div>
-                <div className='flex flex-col gap-4'>
-                    <input value={name} onChange={e => setName(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="text" placeholder='Name' />
-                    <input value={email} onChange={e => setEmail(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="text" placeholder='Email' />
-                    <input value={password} onChange={e => setPassword(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="password" placeholder='Password' />
-                    <input value={repassword} onChange={e => setRepassword(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="password" placeholder='Re-password' />
-                    <button onSubmit={createUser} onClick={handleSignUp} className='bg-blue text-white rounded-[20px] h-12'>Sign up</button>
-                </div>
+                <form onSubmit={createUser}>
+                    <div className='flex flex-col gap-4'>
+                        <input value={name} onChange={e => setName(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="text" placeholder='Name' />
+                        <input value={email} onChange={e => setEmail(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="text" placeholder='Email' />
+                        <input value={password} onChange={e => setPassword(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="password" placeholder='Password' />
+                        <input value={repassword} onChange={e => setRepassword(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="password" placeholder='Re-password' />
+                        <button type='submit' className='bg-blue text-white rounded-[20px] h-12'>Sign up</button>
+                    </div>
+                </form>
                 <div className='flex gap-2'>
                     <h5>Already have account?</h5>
                     <a href='/login' className='text-blue'>Log in </a>
