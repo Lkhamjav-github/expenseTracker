@@ -26,6 +26,7 @@ export const LogIn = () => {
             setToggle('hide')
         }
     };
+    //sadfasdf
     const handleLogIn = async () => {
         try {
             if (password || email) {
