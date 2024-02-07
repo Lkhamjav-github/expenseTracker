@@ -35,12 +35,16 @@ export const LogIn = () => {
             alert(error.message)
         }
     }
-    console.log("toggle is :", toggle)
-    console.log("password.length is :", password.length)
-    //sadfasdf
+
     const handleLogIn = async () => {
         try {
-            if (password || email) {
+            if (email == false) {
+                alert("email esvel password hooson baina ")
+            }
+            if (password == false) {
+                alert("email esvel password hooson baina")
+            }
+            if (password && email) {
                 const response = await fetch('http://localhost:8080/login', {
                     method: "POST",
                     headers: {
@@ -51,18 +55,16 @@ export const LogIn = () => {
                         password
                     })
                 });
-                router.push("/")
                 if (!response.ok) {
-                    return console.log('s')
+                    return alert("password eswel email buruu baina")
                 }
+                router.push("/")
                 alert("success");
             }
         } catch (error) {
             alert(error);
         }
     };
-
-
     useEffect(() => {
         fetchdata
     }, [])
