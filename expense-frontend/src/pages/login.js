@@ -8,6 +8,23 @@ export const LogIn = () => {
     const [password, setPassword] = useState('');
     const [toggle, setToggle] = useState('hide')
     const router = useRouter()
+    const toggleBtn = () => {
+
+        if (toggle === 'hide') {
+            setToggle('seek')
+        }
+        else {
+            setToggle('hide')
+        }
+    };
+    useEffect(() => {
+        if (password.length === 0) {
+            setToggle('none')
+        }
+        if (password.length === 1) {
+            setToggle('hide')
+        }
+    });
     // const [error, setError] = useState('false')
     const fetchdata = async () => {
         try {
@@ -18,14 +35,8 @@ export const LogIn = () => {
             alert(error.message)
         }
     }
-    const toggleBtn = () => {
-        if (toggle === 'hide') {
-            setToggle('seek')
-        }
-        else {
-            setToggle('hide')
-        }
-    };
+    console.log("toggle is :", toggle)
+    console.log("password.length is :", password.length)
     //sadfasdf
     const handleLogIn = async () => {
         try {
@@ -51,6 +62,7 @@ export const LogIn = () => {
         }
     };
 
+
     useEffect(() => {
         fetchdata
     }, [])
@@ -69,8 +81,8 @@ export const LogIn = () => {
                     <input value={email} onChange={e => setEmail(e.target.value)} className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB]' type="text" placeholder='Email' />
                     <div className='border-2 bg-[#F3F4F6] rounded-lg p-4 w-[352px] border-[#D1D5DB] flex items-center justify-between' >
                         <input className='bg-[#F3F4F6] ' value={password} onChange={e => setPassword(e.target.value)} type={`${toggle === 'hide' ? 'password' : 'text'}`} placeholder='Password' />
-                        <div onClick={toggleBtn}>
-                            {toggle === 'hide' ? <Fonteye /> : <Fonthideye />}
+                        <div className={`${toggle == 'none' ? 'hidden' : 'block'}`} onClick={toggleBtn}>
+                            {toggle === 'hide' ? <Fonthideye /> : <Fonteye />}
                         </div>
                     </div>
                     <button onClick={handleLogIn} className='bg-blue text-white rounded-[20px] h-12'>Log in </button>
