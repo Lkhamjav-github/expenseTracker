@@ -2,40 +2,49 @@ import React, { useEffect, useMemo, useState } from 'react'
 import * as yup from 'yup';
 import { userSchema } from '@/Validations/UserValidation';
 
-export const Signup = () => {
+export const Signup = (event) => {
 
     const createUser = async (event) => {
-        console.log("create user")
-        event.preventDefault()
-        var formData = {
-            name: event.target[0].value,
-            email: event.target[1].value,
-            password: event.target[2].value
-        }
-        const isValid = await userSchema.isValid(formData)
-        const validate = await userSchema.validate(formData)
-        console.log("isValid", isValid)
-        console.log("validate", validate)
-        if (isValid) {
-            try {
+        if (password === repassword) {
+            console.log("create user")
+            event.preventDefault()
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent form submission
+                document.querySelector("form").click(); // Trigger button click
+            }
+            var formData = {
+                name: event.target[0].value,
+                email: event.target[1].value,
+                password: event.target[2].value
+            }
+            const isValid = await userSchema.isValid(formData)
+            // const validate = await userSchema.validate(formData)
 
-                const fetched = await fetch('http://localhost:8080/signup', {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        name,
-                        email,
-                        password
+
+            console.log("isValid", isValid)
+
+            if (isValid) {
+                try {
+
+                    const fetched = await fetch('http://localhost:8080/signup', {
+                        method: "POST",
+                        headers: {
+                            "Content-type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            name,
+                            email,
+                            password
+                        })
                     })
-                })
 
-                alert("success")
-            } catch (error) {
-                console.error(error)
+                    alert("success")
+                } catch (error) {
+                    console.error(error)
+                }
             }
         }
+        else alert("password tohitohgui baina")
     }
 
     const [name, setName] = useState('');

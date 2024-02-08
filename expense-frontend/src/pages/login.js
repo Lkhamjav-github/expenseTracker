@@ -36,7 +36,11 @@ export const LogIn = () => {
         }
     }
 
-    const handleLogIn = async () => {
+    const handleLogIn = async (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent form submission
+            document.querySelector("button").click(); // Trigger button click
+        }
         try {
             if (email == false) {
                 alert("email esvel password hooson baina ")
@@ -64,6 +68,7 @@ export const LogIn = () => {
         } catch (error) {
             alert(error);
         }
+
     };
     useEffect(() => {
         fetchdata
