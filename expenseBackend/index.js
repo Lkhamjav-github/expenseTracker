@@ -22,10 +22,6 @@ console.log(bycryptPassword)
 app.use(express.json());
 app.use(cors());
 
-// app.get("/", (req, res) => {
-//     res.send("hello world!");
-// });
-
 app.get("/neon", async (req, res) => {
     const data = await sql`SELECT * FROM playing_with_neon;`;
     res.send(data)

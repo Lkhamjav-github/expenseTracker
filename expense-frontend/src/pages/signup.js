@@ -8,10 +8,7 @@ export const Signup = (event) => {
         if (password === repassword) {
             console.log("create user")
             event.preventDefault()
-            if (event.key === 'Enter') {
-                event.preventDefault(); // Prevent form submission
-                document.querySelector("form").click(); // Trigger button click
-            }
+
             var formData = {
                 name: event.target[0].value,
                 email: event.target[1].value,
