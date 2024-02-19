@@ -67,6 +67,9 @@ app.post("/signup", async (req, res) => {
     VALUES ( ${email},${name},${bycryptPassword},'img',${new Date()},${new Date()});`
     res.send(201).json({ message: 'succsefully created' })
 })
+app.post("/", async (req, res) => {
+    const { amount, category, date, time, payee, note, type } = req.body
+})
 app.get("/", async (req, res) => {
     const data = await sql`select * from users`
     res.send(data);

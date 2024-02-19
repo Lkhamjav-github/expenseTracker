@@ -30,32 +30,24 @@ export const Records = (props) => {
     const [time, setTime] = useState('');
     const [payee, setPayee] = useState('');
     const [note, setNote] = useState('');
-
+    console.log(category)
     const addRecords = async () => {
         try {
-            if (email == false) {
-                alert("email esvel password hooson baina ")
-            }
-            if (password == false) {
-                alert("email esvel password hooson baina")
-            }
-            if (password && email) {
-                const response = await fetch('http://localhost:8080/login', {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        email,
-                        password
-                    })
-                });
-                if (!response.ok) {
-                    return alert("password eswel email buruu baina")
-                }
-                router.push("/")
-                alert("success");
-            }
+            await fetch('http://localhost:8080', {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    amount,
+                    category,
+                    date,
+                    time,
+                    payee,
+                    note,
+                    type
+                })
+            });
         } catch (error) {
             alert(error);
         }
@@ -206,10 +198,10 @@ export const Records = (props) => {
                         </div>
                         <label className='rounded-xl border-[1px] bg-[#F3F4F6] border-[#D1D5DB] py-3 pl-4 ' htmlFor="" >
                             <h1>Amount</h1>
-                            <input className='bg-[#F3F4F6]' type="text" placeholder='$  000.00' />
+                            <input value={amount} onChange={e => setAmount(e.target.value)} className='bg-[#F3F4F6]' type="text" placeholder='$  000.00' />
                         </label>
                         <h2 className='mt-[22px]'>Category</h2>
-                        <select className="select select-bordered w-full  bg-[#F3F4F6]">
+                        <select value={category} onChange={e => setCategory(e.target.value)} className="select select-bordered w-full  bg-[#F3F4F6]">
                             <option disabled selected>Find a choose category </option>
                             <option className='flex justify-center items-center'>
                                 Add category
@@ -226,30 +218,30 @@ export const Records = (props) => {
                         <div className='flex gap-[12px] mb-8 mt-[22px]'>
                             <div>
                                 <h2 className='w-[168px]'>Date</h2>
-                                <select className="select select-bordered w-full  bg-[#F3F4F6]">
+                                <select value={date} onChange={e => setDate(e.target.value)} className="select select-bordered w-full  bg-[#F3F4F6]">
                                     <option className='text-[#94A3B8]' disabled selected>Oct 30, 2023</option>
                                     <option value="date">date</option>
                                 </select>
                             </div>
                             <div>
                                 <h2 className='w-[168px]'>Time</h2>
-                                <select className="select select-bordered w-full bg-[#F3F4F6]">
+                                <select value={time} onChange={e => setTime(e.target.value)} className="select select-bordered w-full bg-[#F3F4F6]">
                                     <option className='text-[#94A3B8]' disabled selected>4:15 PM</option>
                                     <option value="date">date</option>
                                 </select>
                             </div>
                         </div>
-                        <button className={`rounded-[20px] py-2 text-white  ${toggle === 'Expense' ? ' bg-blue' : 'bg-[#16A34A]'}`}> Add Record</button>
+                        <button onClick={addRecords} className={`rounded-[20px] py-2 text-white  ${toggle === 'Expense' ? ' bg-blue' : 'bg-[#16A34A]'}`}> Add Record</button>
                     </div>
                     <div>
                         <h2>Payee </h2>
-                        <select className="select select-bordered w-[348px] bg-[#F3F4F6]">
+                        <select value={payee} onChange={e => setPayee(e.target.value)} className="select select-bordered w-[348px] bg-[#F3F4F6]">
                             <option className='text-[#94A3B8]' disabled selected>Write here</option>
                             <option>MNT</option>
                             <option>USD</option>
                         </select>
                         <h2>Note</h2>
-                        <input className='bg-[#F3F4F6] border-2 rounded-lg py-3 px-4 w-[348px] pb-[240px]' type="text" placeholder='Write here' />
+                        <input value={note} onChange={e => setNote(e.target.value)} className='bg-[#F3F4F6] border-2 rounded-lg py-3 px-4 w-[348px] pb-[240px]' type="text" placeholder='Write here' />
                     </div>
                 </div>
             </div >
