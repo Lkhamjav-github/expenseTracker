@@ -7,7 +7,6 @@ import { Plus } from './icons/Plus'
 export const Records = (props) => {
     // const modal = document.getElementById("modal")
     // addRecord(() => {
-
     // })
     const [toggle, setToggle] = useState('Expense');
     const toggleButton = (type) => {
@@ -23,6 +22,45 @@ export const Records = (props) => {
             setAdd('')
         }
     }
+    const [expense, setExpense] = useState('');
+    const [income, setIncome] = useState('');
+    const [amount, setAmount] = useState('');
+    const [category, setCategory] = useState('');
+    const [date, setDate] = useState('');
+    const [time, setTime] = useState('');
+    const [payee, setPayee] = useState('');
+    const [note, setNote] = useState('');
+
+    const addRecords = async () => {
+        try {
+            if (email == false) {
+                alert("email esvel password hooson baina ")
+            }
+            if (password == false) {
+                alert("email esvel password hooson baina")
+            }
+            if (password && email) {
+                const response = await fetch('http://localhost:8080/login', {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password
+                    })
+                });
+                if (!response.ok) {
+                    return alert("password eswel email buruu baina")
+                }
+                router.push("/")
+                alert("success");
+            }
+        } catch (error) {
+            alert(error);
+        }
+
+    };
     return (
         <div className='bg-[#F3F4F6] flex justify-center items-center  flex-col'>
             <div className={`py-8 px-[120px] flex gap-6 lg:w-[1440px]`}>
