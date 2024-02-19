@@ -211,7 +211,7 @@ export const Records = (props) => {
                             <option>USD</option>
                         </select>
                         <h2>Note</h2>
-                        <input className='bg-[#F3F4F6] border-2 rounded-lg py-3 px-4 w-[348px] h-[280px]' type="text" placeholder='Write here' />
+                        <input className='bg-[#F3F4F6] border-2 rounded-lg py-3 px-4 w-[348px] pb-[240px]' type="text" placeholder='Write here' />
                     </div>
                 </div>
             </div >
