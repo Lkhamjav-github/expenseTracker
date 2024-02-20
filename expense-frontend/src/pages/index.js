@@ -9,6 +9,7 @@ import { Fonthideye } from "@/components/icons/Fonthideye";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  console.log("hhe")
   return (
     <main>
       <Header />
