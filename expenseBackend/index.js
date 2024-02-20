@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken")
 
 
 const saltRounds = 10;
-// const password = '12345678';
+const password = '12345678';
 
 
 const salt = bcrypt.genSaltSync(saltRounds);
