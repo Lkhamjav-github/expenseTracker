@@ -9,6 +9,7 @@ export const Category = (props) => {
                 <h3>{props.value}</h3>
             </div>
             <Right />
+            //asdfsadf
         </div>
 
     )
