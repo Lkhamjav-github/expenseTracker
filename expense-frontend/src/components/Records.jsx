@@ -239,7 +239,8 @@ export const Records = (props) => {
                             <option className='text-[#94A3B8]' disabled selected>Write here</option>
                             <option>MNT</option>
                             <option>USD</option>
-                            //sdfasd
+                            //sdafasdf
+                        //sdfasd
                         </select>
                         <h2>Note</h2>
                         <input value={note} onChange={e => setNote(e.target.value)} className='bg-[#F3F4F6] border-2 rounded-lg py-3 px-4 w-[348px] pb-[240px]' type="text" placeholder='Write here' />
