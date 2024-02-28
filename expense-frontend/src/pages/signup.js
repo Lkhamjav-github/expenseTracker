@@ -43,13 +43,6 @@ export const Signup = (event) => {
         }
         else alert("password tohitohgui baina")
     }
-
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [repassword, setRepassword] = useState('');
-    const [users, setUsers] = useState('');
-
     const fetchdata = async () => {
         try {
             const res = await fetch("http://localhost:8080/signup");
@@ -60,6 +53,14 @@ export const Signup = (event) => {
             alert(error.message)
         }
     }
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [repassword, setRepassword] = useState('');
+    const [users, setUsers] = useState('');
+
+
     // const handleSignUp = async () => {
 
     // }
