@@ -44,7 +44,7 @@ app.post("/login", async (req, res) => {
         }
 
         const token = jwt.sign({ userId: findUser[0].id }, secretKey, { expiresIn: '10h' })
-
+        console.log("token is:", token)
         res.status(201).json({ message: 'User sign in success', token })
     }
     catch (error) {
