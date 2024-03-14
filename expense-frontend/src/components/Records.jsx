@@ -3,11 +3,11 @@ import { Eye } from './icons/Eye'
 import { Right } from './icons/Right'
 import { Category } from './Category'
 import { Plus } from './icons/Plus'
-import { AddContext } from '../../context/AddContext'
+
 
 export const Records = (props) => {
 
-    const { add, setAdd } = useContext(AddContext)
+    const [add, setAdd] = useState('added')
 
     const [toggle, setToggle] = useState('Expense');
     const toggleButton = (type) => {

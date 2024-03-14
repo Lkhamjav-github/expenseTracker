@@ -52,7 +52,6 @@ app.post("/login", async (req, res) => {
         res.status(500).json({ message: 'User failed' })
     }
 })
-//asdfkhas
 app.post("/signup", async (req, res) => {
     const { name, email, password } = req.body;
 
