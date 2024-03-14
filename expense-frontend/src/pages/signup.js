@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import * as yup from 'yup';
 import { userSchema } from '@/Validations/UserValidation';
+import { useRouter } from 'next/router';
 
 export const Signup = (event) => {
-
+    const router = useRouter()
     const createUser = async (event) => {
         if (password === repassword) {
             console.log("create user")
@@ -34,7 +35,7 @@ export const Signup = (event) => {
                             password
                         })
                     })
-
+                    router.push("/login")
                     alert("success")
                 } catch (error) {
                     console.error(error)
@@ -60,10 +61,6 @@ export const Signup = (event) => {
     const [repassword, setRepassword] = useState('');
     const [users, setUsers] = useState('');
 
-
-    // const handleSignUp = async () => {
-
-    // }
     useEffect(() => {
         fetchdata
     }, [])

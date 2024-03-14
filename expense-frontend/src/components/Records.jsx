@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Eye } from './icons/Eye'
 import { Right } from './icons/Right'
 import { Category } from './Category'
 import { Plus } from './icons/Plus'
+import { AddContext } from '../../context/AddContext'
 
 export const Records = (props) => {
-    // const modal = document.getElementById("modal")
-    // addRecord(() => {
-    // })
+
+    const { add, setAdd } = useContext(AddContext)
+
     const [toggle, setToggle] = useState('Expense');
     const toggleButton = (type) => {
         console.log("type", type);
         setToggle(type)
     };
-    const [add, setAdd] = useState('added')
+
     const Add = () => {
         if (add === '') {
             setAdd('added')
@@ -22,6 +23,7 @@ export const Records = (props) => {
             setAdd('')
         }
     }
+    console.log(add)
     const [expense, setExpense] = useState('');
     const [income, setIncome] = useState('');
     const [amount, setAmount] = useState('');
@@ -54,7 +56,7 @@ export const Records = (props) => {
 
     };
     return (
-        <div className='bg-[#F3F4F6] flex justify-center items-center  flex-col'>
+        <div className='bg-[#F3F4F6] flex justify-center items-center  flex-col '>
             <div className={`py-8 px-[120px] flex gap-6 lg:w-[1440px]`}>
                 <div className='bg-white rounded-xl py-4 px-4 gap-6 flex flex-col'>
                     <h1>Records</h1>
@@ -182,71 +184,72 @@ export const Records = (props) => {
                     </div>
                 </div>
             </div>
-            <div className={`w-[792px] border-solid border-2 rounded-xl bg-white ${add === 'added' ? 'hidden' : 'absolute'}`}>
-                <div className='flex justify-between py-5 px-6'>
-                    <h1 className='font-semibold text-xl '>Add Record</h1>
-                    <svg onClick={Add} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19.5459 17.954C19.7572 18.1653 19.876 18.452 19.876 18.7509C19.876 19.0497 19.7572 19.3364 19.5459 19.5477C19.3346 19.7591 19.0479 19.8778 18.749 19.8778C18.4501 19.8778 18.1635 19.7591 17.9521 19.5477L12 13.5937L6.0459 19.5459C5.83455 19.7572 5.54791 19.8759 5.24902 19.8759C4.95014 19.8759 4.66349 19.7572 4.45215 19.5459C4.2408 19.3345 4.12207 19.0479 4.12207 18.749C4.12207 18.4501 4.2408 18.1635 4.45215 17.9521L10.4062 11.9999L4.45402 6.04586C4.24268 5.83451 4.12395 5.54787 4.12395 5.24898C4.12395 4.9501 4.24268 4.66345 4.45402 4.45211C4.66537 4.24076 4.95201 4.12203 5.2509 4.12203C5.54978 4.12203 5.83643 4.24076 6.04777 4.45211L12 10.4062L17.954 4.45117C18.1654 4.23983 18.452 4.12109 18.7509 4.12109C19.0498 4.12109 19.3364 4.23983 19.5478 4.45117C19.7591 4.66251 19.8778 4.94916 19.8778 5.24804C19.8778 5.54693 19.7591 5.83358 19.5478 6.04492L13.5937 11.9999L19.5459 17.954Z" fill="#0F172A" />
-                    </svg>
-                </div>
-                <hr />
-                <div className='flex'>
-                    <div className='flex py-5 px-6 flex-col'>
-                        <div className='flex justify-center items-center bg-[#F3F4F6] rounded-[20px] mb-5'>
-                            <button onClick={() => toggleButton('Expense')} className={`py-2 px-[55px] ${toggle === 'Expense' ? 'bg-blue text-white' : 'bg-[#F3F4F6] text-black'} rounded-[20px] `}>Expense</button>
-                            <button onClick={() => toggleButton('Income')} className={`py-2 px-[55px] ${toggle === 'Income' ? 'bg-[#16A34A] text-white' : 'bg-[#F3F4F6] text-black'} rounded-[20px]`}>Income</button>
-                        </div>
-                        <label className='rounded-xl border-[1px] bg-[#F3F4F6] border-[#D1D5DB] py-3 pl-4 ' htmlFor="" >
-                            <h1>Amount</h1>
-                            <input value={amount} onChange={e => setAmount(e.target.value)} className='bg-[#F3F4F6]' type="text" placeholder='$  000.00' />
-                        </label>
-                        <h2 className='mt-[22px]'>Category</h2>
-                        <select value={category} onChange={e => setCategory(e.target.value)} className="select select-bordered w-full  bg-[#F3F4F6]">
-                            <option disabled selected>Find a choose category </option>
-                            <option className='flex justify-center items-center'>
-                                Add category
-                            </option>
-                            <option value={'home'}>Home</option>
-                            <option value={'Gift'}>Gift</option>
-                            <option value={'Food'}>Food</option>
-                            <option value={'Drink'}>Drink</option>
-                            <option value={'Taxi'}>Taxi</option>
-                            <option value={'Shopping'}>Shopping</option>
-                            <option value={'home'}>Home</option>
-                            <option value={'home'}>Home</option>
-                        </select>
-                        <div className='flex gap-[12px] mb-8 mt-[22px]'>
-                            <div>
-                                <h2 className='w-[168px]'>Date</h2>
-                                <select value={date} onChange={e => setDate(e.target.value)} className="select select-bordered w-full  bg-[#F3F4F6]">
-                                    <option className='text-[#94A3B8]' disabled selected>Oct 30, 2023</option>
-                                    <option value="date">date</option>
-                                </select>
-                            </div>
-                            <div>
-                                <h2 className='w-[168px]'>Time</h2>
-                                <select value={time} onChange={e => setTime(e.target.value)} className="select select-bordered w-full bg-[#F3F4F6]">
-                                    <option className='text-[#94A3B8]' disabled selected>4:15 PM</option>
-                                    <option value="date">date</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button onClick={addRecords} className={`rounded-[20px] py-2 text-white  ${toggle === 'Expense' ? ' bg-blue' : 'bg-[#16A34A]'}`}> Add Record</button>
+            <div className={` ${add === 'added' ? 'hidden' : 'absolute'} top-0 bg-black/50 w-[100%] h-[1080px] flex items-center justify-center `}>
+                <div className={`w-[792px] border-solid border-2 rounded-xl bg-white `}>
+                    <div className='flex justify-between py-5 px-6'>
+                        <h1 className='font-semibold text-xl '>Add Record</h1>
+                        <svg onClick={Add} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.5459 17.954C19.7572 18.1653 19.876 18.452 19.876 18.7509C19.876 19.0497 19.7572 19.3364 19.5459 19.5477C19.3346 19.7591 19.0479 19.8778 18.749 19.8778C18.4501 19.8778 18.1635 19.7591 17.9521 19.5477L12 13.5937L6.0459 19.5459C5.83455 19.7572 5.54791 19.8759 5.24902 19.8759C4.95014 19.8759 4.66349 19.7572 4.45215 19.5459C4.2408 19.3345 4.12207 19.0479 4.12207 18.749C4.12207 18.4501 4.2408 18.1635 4.45215 17.9521L10.4062 11.9999L4.45402 6.04586C4.24268 5.83451 4.12395 5.54787 4.12395 5.24898C4.12395 4.9501 4.24268 4.66345 4.45402 4.45211C4.66537 4.24076 4.95201 4.12203 5.2509 4.12203C5.54978 4.12203 5.83643 4.24076 6.04777 4.45211L12 10.4062L17.954 4.45117C18.1654 4.23983 18.452 4.12109 18.7509 4.12109C19.0498 4.12109 19.3364 4.23983 19.5478 4.45117C19.7591 4.66251 19.8778 4.94916 19.8778 5.24804C19.8778 5.54693 19.7591 5.83358 19.5478 6.04492L13.5937 11.9999L19.5459 17.954Z" fill="#0F172A" />
+                        </svg>
                     </div>
-                    <div>
-                        <h2>Payee </h2>
-                        <select value={payee} onChange={e => setPayee(e.target.value)} className="select select-bordered w-[348px] bg-[#F3F4F6]">
-                            <option className='text-[#94A3B8]' disabled selected>Write here</option>
-                            <option>MNT</option>
-                            <option>USD</option>
-                            //sdafasdf
-                        //sdfasd
-                        </select>
-                        <h2>Note</h2>
-                        <input value={note} onChange={e => setNote(e.target.value)} className='bg-[#F3F4F6] border-2 rounded-lg py-3 px-4 w-[348px] pb-[240px]' type="text" placeholder='Write here' />
+                    <hr />
+                    <div className='flex'>
+                        <div className='flex py-5 px-6 flex-col'>
+                            <div className='flex justify-center items-center bg-[#F3F4F6] rounded-[20px] mb-5'>
+                                <button onClick={() => toggleButton('Expense')} className={`py-2 px-[55px] ${toggle === 'Expense' ? 'bg-blue text-white' : 'bg-[#F3F4F6] text-black'} rounded-[20px] `}>Expense</button>
+                                <button onClick={() => toggleButton('Income')} className={`py-2 px-[55px] ${toggle === 'Income' ? 'bg-[#16A34A] text-white' : 'bg-[#F3F4F6] text-black'} rounded-[20px]`}>Income</button>
+                            </div>
+                            <label className='rounded-xl border-[1px] bg-[#F3F4F6] border-[#D1D5DB] py-3 pl-4 ' htmlFor="" >
+                                <h1>Amount</h1>
+                                <input value={amount} onChange={e => setAmount(e.target.value)} className='bg-[#F3F4F6]' type="text" placeholder='$  000.00' />
+                            </label>
+                            <h2 className='mt-[22px]'>Category</h2>
+                            <select value={category} onChange={e => setCategory(e.target.value)} className="select select-bordered w-full  bg-[#F3F4F6]">
+                                <option disabled selected>Find a choose category </option>
+                                <option className='flex justify-center items-center'>
+                                    Add category
+                                </option>
+                                <option value={'home'}>Home</option>
+                                <option value={'Gift'}>Gift</option>
+                                <option value={'Food'}>Food</option>
+                                <option value={'Drink'}>Drink</option>
+                                <option value={'Taxi'}>Taxi</option>
+                                <option value={'Shopping'}>Shopping</option>
+                                <option value={'home'}>Home</option>
+                                <option value={'home'}>Home</option>
+                            </select>
+                            <div className='flex gap-[12px] mb-8 mt-[22px]'>
+                                <div>
+                                    <h2 className='w-[168px]'>Date</h2>
+                                    <select value={date} onChange={e => setDate(e.target.value)} className="select select-bordered w-full  bg-[#F3F4F6]">
+                                        <option className='text-[#94A3B8]' disabled selected>Oct 30, 2023</option>
+                                        <option value="date">date</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <h2 className='w-[168px]'>Time</h2>
+                                    <select value={time} onChange={e => setTime(e.target.value)} className="select select-bordered w-full bg-[#F3F4F6]">
+                                        <option className='text-[#94A3B8]' disabled selected>4:15 PM</option>
+                                        <option value="date">date</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button onClick={addRecords} className={`rounded-[20px] py-2 text-white  ${toggle === 'Expense' ? ' bg-blue' : 'bg-[#16A34A]'}`}> Add Record</button>
+                        </div>
+                        <div>
+                            <h2>Payee </h2>
+                            <select value={payee} onChange={e => setPayee(e.target.value)} className="select select-bordered w-[348px] bg-[#F3F4F6]">
+                                <option className='text-[#94A3B8]' disabled selected>Write here</option>
+                                <option>MNT</option>
+                                <option>USD</option>
+
+                            </select>
+                            <h2>Note</h2>
+                            <input value={note} onChange={e => setNote(e.target.value)} className='bg-[#F3F4F6] border-2 rounded-lg py-3 px-4 w-[348px] pb-[240px]' type="text" placeholder='Write here' />
+                        </div>
                     </div>
-                </div>
-            </div >
+                </div >
+            </div>
         </div >
     )
 }
