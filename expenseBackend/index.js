@@ -50,7 +50,7 @@ app.post("/login", async (req, res) => {
         console.log("refresh token is : ", refreshToken)
         res.status(200)
             .cookie("refreshToken", refreshToken)
-            .json({ message: 'User sign in success', accessToken: accessToken });
+            .json({ message: 'User sign in success', userId: findUser[0]?.id, accessToken: accessToken });
 
         // res.status(201).json({ message: 'User sign in success', token: token })
     }

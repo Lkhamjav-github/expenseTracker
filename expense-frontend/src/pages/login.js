@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Fonteye } from '@/components/icons/Fonteye';
 import { Fonthideye } from '@/components/icons/Fonthideye';
 
@@ -59,6 +59,7 @@ export const LogIn = () => {
                     return alert("password eswel email buruu baina")
                 }
                 const data = await response.json();
+                console.log(data)
                 const accessToken = data.accessToken
                 const refreshToken = data.refreshToken
                 router.push("/")
