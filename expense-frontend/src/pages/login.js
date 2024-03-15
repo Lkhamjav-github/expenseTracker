@@ -58,7 +58,11 @@ export const LogIn = () => {
                 if (!response.ok) {
                     return alert("password eswel email buruu baina")
                 }
+                const data = await response.json();
+                const accessToken = data.accessToken
+                const refreshToken = data.refreshToken
                 router.push("/")
+                localStorage.setItem("refreshToken", refreshToken);
                 alert("success");
             }
         } catch (error) {

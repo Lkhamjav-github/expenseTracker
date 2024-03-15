@@ -43,9 +43,16 @@ app.post("/login", async (req, res) => {
             return res.status(400).json({ message: 'wrong password' })
         }
 
-        const token = jwt.sign({ userId: findUser[0].id }, secretKey, { expiresIn: '10h' })
-        console.log("token is:", token)
-        res.status(201).json({ message: 'User sign in success', token })
+        // const token = jwt.sign({ userId: findUser[0].id }, "1231", { expiresIn: '10h' })
+        const refreshToken = jwt.sign({ userId: findUser[0].id, email: findUser[0].email }, 'JWT_SECRET_KEY', { expiresIn: '24h' });
+        const accessToken = jwt.sign({ userId: findUser[0].id, email: findUser[0].email }, 'JWT_SECRET_KEY', { expiresIn: '1h' });
+        console.log("access token is : ", accessToken);
+        console.log("refresh token is : ", refreshToken)
+        res.status(200)
+            .cookie("refreshToken", refreshToken)
+            .json({ message: 'User sign in success', accessToken: accessToken });
+
+        // res.status(201).json({ message: 'User sign in success', token: token })
     }
     catch (error) {
         console.log(error)
